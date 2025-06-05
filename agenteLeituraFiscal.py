@@ -69,9 +69,9 @@ if uploaded_file is not None:
             st.session_state.nomes_arquivos = nomes
 
 if st.session_state.lista_dfs:
-    st.success(f"{len(st.session_state.lista_dfs)} DataFrames carregados com sucesso!")
+    st.success(f"{len(st.session_state.lista_dfs)} planilhas carregadas com sucesso!")
     
-    with st.expander("Ver detalhes dos DataFrames carregados"):
+    with st.expander("Ver detalhes das planilhas carregadas"):
         for nome, df in zip(st.session_state.nomes_arquivos, st.session_state.lista_dfs):
             st.write(f"**Arquivo: `{nome}`**")
             st.write(f"Shape: {df.shape[0]} linhas, {df.shape[1]} colunas")
@@ -79,7 +79,7 @@ if st.session_state.lista_dfs:
             st.divider()
 
 if st.session_state.lista_dfs:
-    st.header("Faça sua pergunta sobre os dados combinados")
+    st.header("Faça sua pergunta sobre os dados do documento ZIP")
     
     pergunta_usuario = st.text_input("Ex: Qual produto teve a maior quantidade total vendida?")
 
