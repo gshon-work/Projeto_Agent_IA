@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from langchain_google_genai import GoogleGenerativeAI
 
 # Importa o agente da LangChain (esta parte não muda)
-from langchain.agents import create_pandas_dataframe_agent
+from langchain_experimental.agents import create_pandas_dataframe_agent
 
 # Carrega as variáveis de ambiente (agora vai procurar por GOOGLE_API_KEY)
 load_dotenv()
