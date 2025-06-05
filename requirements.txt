@@ -1,5 +1,6 @@
 streamlit
 pandas
+tabulate
 langchain-experimental
 langchain-google-genai
 python-dotenv
