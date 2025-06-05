@@ -70,7 +70,7 @@ if uploaded_file is not None:
 
 if st.session_state.lista_dfs:
     st.success(f"{len(st.session_state.lista_dfs)} DataFrames carregados com sucesso!")
-    a
+    
     with st.expander("Ver detalhes dos DataFrames carregados"):
         for nome, df in zip(st.session_state.nomes_arquivos, st.session_state.lista_dfs):
             st.write(f"**Arquivo: `{nome}`**")
