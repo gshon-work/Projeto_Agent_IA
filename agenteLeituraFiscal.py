@@ -108,7 +108,7 @@ if st.session_state.lista_dfs:
                         Você tem acesso a uma lista de DataFrames.
                         Quando uma pergunta for feita, você deve primeiro descobrir em qual DataFrame (ou em quais) está a informação.
                         Se precisar, você pode escrever e executar código para juntar ('merge') os DataFrames usando colunas em comum.
-                        Responda à pergunta do usuário da forma mais clara e completa possível.""",
+                        Responda à pergunta do usuário da forma objetiva e concisa.""",
                         allow_dangerous_code=True 
                     )
                     
