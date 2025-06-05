@@ -94,7 +94,8 @@ if st.session_state.lista_dfs:
         if pergunta_usuario:
             with st.spinner('O agente Gemini está analisando os múltiplos dataframes... 🤔'):
                 try:
-                    llm = GoogleGenerativeAI(model="gemini-pro", temperature=0)
+                    # Versão corrigida (Plano B)
+                    llm = GoogleGenerativeAI(model="models/gemini-pro", temperature=0)
                     
                     # ### A GRANDE MUDANÇA ESTÁ AQUI ###
                     # Passamos a lista de DataFrames em vez de um só.
