@@ -11,8 +11,6 @@ from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe
 # Carrega as variáveis de ambiente
 load_dotenv()
 
-# --- Funções Auxiliares (A mesma função de antes) ---
-
 def descompactar_e_ler_csvs(arquivo_zip):
     """
     Descompacta um ZIP e lê todos os arquivos CSV encontrados, retornando uma lista de DataFrames.
@@ -52,7 +50,6 @@ st.set_page_config(page_title="Agente Multi-DataFrame com Gemini", layout="wide"
 st.title("🤖 Agente de IA para Análise de Dados Consolidados")
 st.write("Faça o upload de um .zip com múltiplos arquivos CSV. O agente analisará todos eles em conjunto.")
 
-# Inicializa o estado da sessão
 if 'lista_dfs' not in st.session_state:
     st.session_state.lista_dfs = None
 if 'nomes_arquivos' not in st.session_state:
@@ -60,7 +57,6 @@ if 'nomes_arquivos' not in st.session_state:
 if 'nome_arquivo_zip' not in st.session_state:
     st.session_state.nome_arquivo_zip = ""
 
-# 1. Upload do arquivo ZIP
 uploaded_file = st.file_uploader("Escolha um arquivo .zip", type="zip")
 
 if uploaded_file is not None:
@@ -72,11 +68,9 @@ if uploaded_file is not None:
             st.session_state.lista_dfs = dfs
             st.session_state.nomes_arquivos = nomes
 
-# 2. Mostra informações sobre os DataFrames carregados
 if st.session_state.lista_dfs:
     st.success(f"{len(st.session_state.lista_dfs)} DataFrames carregados com sucesso!")
-    
-    # Usa um expander para não poluir a tela
+    a
     with st.expander("Ver detalhes dos DataFrames carregados"):
         for nome, df in zip(st.session_state.nomes_arquivos, st.session_state.lista_dfs):
             st.write(f"**Arquivo: `{nome}`**")
@@ -84,7 +78,6 @@ if st.session_state.lista_dfs:
             st.dataframe(df.head(3))
             st.divider()
 
-# 3. Caixa de pergunta e interação com o agente
 if st.session_state.lista_dfs:
     st.header("Faça sua pergunta sobre os dados combinados")
     
@@ -94,11 +87,9 @@ if st.session_state.lista_dfs:
         if pergunta_usuario:
             with st.spinner('O agente Gemini está analisando os múltiplos dataframes... 🤔'):
                 try:
-                    # Versão corrigida (Plano B)
+                 
                     llm = GoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
                     
-                    # ### A GRANDE MUDANÇA ESTÁ AQUI ###
-                    # Passamos a lista de DataFrames em vez de um só.
                     agente = create_pandas_dataframe_agent(
                         llm,
                         st.session_state.lista_dfs, # <--- Passando a lista!
